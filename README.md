@@ -24,7 +24,7 @@ cost(n, 500, "claude-sonnet")
 
 ## Accuracy
 
-It is a heuristic (chars/4 and word-piece blend, denser for non-Latin scripts like Arabic). Expect roughly 15% error against real tokenizers. Good for budgeting, not billing. Prices live in the `PRICES` dict at the top of `tokenwise/__init__.py`; update them to match current provider pricing.
+It is a heuristic (chars/4 and word-piece blend, denser for non-Latin scripts like Arabic). Expect roughly 15% error against real tokenizers. Good for budgeting, not billing. Prices live in the `PRICES` dict at the top of `tokenwise.py`; update them to match current provider pricing.
 
 ## Test
 
