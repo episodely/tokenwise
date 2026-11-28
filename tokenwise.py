@@ -23,6 +23,8 @@ def estimate_tokens(text: str) -> int:
     return int(round(max(by_chars, by_words) + adj))
 
 def cost(tokens_in: int, tokens_out: int = 0, model: str = "gpt-4o") -> float:
+    if model not in PRICES:
+        raise ValueError(f"unknown model {model!r}; known: {', '.join(sorted(PRICES))}")
     pin, pout = PRICES[model]
     return (tokens_in * pin + tokens_out * pout) / 1_000_000
 
@@ -32,7 +34,11 @@ def main(argv=None):
     p.add_argument("--out", type=int, default=0, help="expected output tokens")
     p.add_argument("--json", action="store_true")
     a = p.parse_args(argv)
-    text = open(a.file, encoding="utf-8").read() if a.file else sys.stdin.read()
+    try:
+        text = open(a.file, encoding="utf-8").read() if a.file else sys.stdin.read()
+    except OSError as e:
+        print(f"tokenwise: {e}", file=sys.stderr)
+        return 2
     n = estimate_tokens(text)
     rows = {m: round(cost(n, a.out, m), 6) for m in PRICES}
     if a.json:
