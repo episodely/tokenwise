@@ -9,6 +9,14 @@ $ echo "Summarize this article in three bullet points." | python -m tokenwise
   ...
 ```
 
+## Install
+
+```
+pip install tokenwise-py
+```
+
+Or copy `tokenwise.py` into your project, it has no dependencies.
+
 ## Usage
 
 ```
