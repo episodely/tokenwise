@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tokenwise-py"
+version = "0.1.0"
+description = "Estimate tokens and cost of a prompt across popular LLMs."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.8"
+authors = [{ name = "episodely" }]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/episodely/tokenwise"
+Issues = "https://github.com/episodely/tokenwise/issues"
+
+[project.scripts]
+tokenwise = "tokenwise:main"
+
+[tool.setuptools]
+py-modules = ["tokenwise"]
